@@ -1,6 +1,7 @@
 #include "GameLoop.hpp"
+#include "DEFINITIONS.hpp"
 
 int main()
 {
-	Sonar::GameLoop(800, 600, "SFML Starter");
+	Sonar::GameLoop(SCREEN_WIDTH, SCREEN_HEIGHT, "SFML Starter");
 }
