@@ -3,5 +3,5 @@
 
 int main()
 {
-	Sonar::GameLoop(SCREEN_WIDTH, SCREEN_HEIGHT, "SFML Starter");
+	Sonar::GameLoop(600, 800, "SFML Starter");
 }
