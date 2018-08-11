@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "AssetsManager.hpp"
 
-namespace Sonar
+namespace Bardo
 {
 	void AssetsManager::LoadTexture(std::string name, std::string fileName)
 	{

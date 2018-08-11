@@ -7,7 +7,7 @@
 #include "AssetsManager.hpp"
 #include "InputsManager.hpp"
 
-namespace Sonar
+namespace Bardo
 {
 	struct GameData
 	{

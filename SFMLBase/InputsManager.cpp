@@ -2,7 +2,7 @@
 
 #include "InputsManager.hpp"
 
-namespace Sonar
+namespace Bardo
 {
 	bool InputsManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window)
 	{

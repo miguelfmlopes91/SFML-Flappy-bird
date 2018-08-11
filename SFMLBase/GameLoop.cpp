@@ -1,7 +1,7 @@
 #include "GameLoop.hpp"
 #include "SplashState.hpp"
 
-namespace Sonar
+namespace Bardo
 {
 	GameLoop::GameLoop(int width, int height, std::string title)
 	{

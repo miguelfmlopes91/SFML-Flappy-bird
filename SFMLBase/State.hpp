@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Sonar
-{
+namespace Bardo{
 	class State
 	{
 	public:

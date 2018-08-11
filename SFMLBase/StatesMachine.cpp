@@ -1,6 +1,6 @@
 #include "StatesMachine.hpp"
 
-namespace Sonar
+namespace Bardo
 {
 	void StatesMachine::AddState(StateRef newState, bool isReplacing)
 	{

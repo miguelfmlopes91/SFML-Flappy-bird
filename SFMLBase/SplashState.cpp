@@ -2,12 +2,12 @@
 
 #include <sstream>
 #include "SplashState.hpp"
-//#include "MainMenuState.hpp"
+#include "MainMenuState.hpp"
 #include "DEFINITIONS.hpp"
 
 #include <iostream>
 
-namespace Sonar
+namespace Bardo
 {
 	SplashState::SplashState(GameDataRef data) : _data(data)
 	{

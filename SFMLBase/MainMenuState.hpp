@@ -6,10 +6,10 @@
 
 namespace Bardo
 {
-	class SplashState : public State
+	class MainMenuState : public State
 	{
 	public:
-		SplashState(GameDataRef data);
+		MainMenuState(GameDataRef data);
 
 		void Init();
 

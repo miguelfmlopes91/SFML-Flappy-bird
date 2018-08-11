@@ -3,5 +3,5 @@
 
 int main()
 {
-	Sonar::GameLoop(600, 800, "SFML Starter");
+	Bardo::GameLoop(600, 800, "Flappy Bird");
 }
