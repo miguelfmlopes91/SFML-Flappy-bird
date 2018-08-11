@@ -23,8 +23,8 @@ namespace Bardo
 	private:
 		GameDataRef _data;
 
-		sf::Clock _clock;
-
 		sf::Sprite _background;
+		sf::Sprite _title;
+		sf::Sprite _playButton;
 	};
 }
