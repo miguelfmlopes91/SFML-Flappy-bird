@@ -1,10 +1,12 @@
 #pragma once
 
 #include <sstream>
+#include <iostream>
+
 #include "DEFINITIONS.hpp"
 #include "GameState.hpp"
 
-#include <iostream>
+
 
 namespace Bardo
 {
