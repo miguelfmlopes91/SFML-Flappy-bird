@@ -2,6 +2,7 @@
 
 #include <sstream>
 
+#include "GameState.hpp"
 #include "MainMenuState.hpp"
 #include "DEFINITIONS.hpp"
 
@@ -42,18 +43,14 @@ namespace Bardo
 			if (this->_data->input.IsSpriteClicked(this->_playButton, sf::Mouse::Left, this->_data->window))
 			{
 				// Switch To Main Menu
-				//this->_data->machine.AddState(StateRef(new GameState(_data)), true);
+				this->_data->machine.AddState(StateRef(new GameState(_data)), true);
 			}
 		}
 	}
 
 	void MainMenuState::Update(float dt)
 	{
-		//if (this->_clock.getElapsedTime().asSeconds() > MainMenu_STATE_SHOW_TIME)
-		//{
-		//	// Switch To Main Menu
-		//	//this->_data->machine.AddState(StateRef(new MainMenuState(_data)), true);
-		//}
+
 	}
 
 	void MainMenuState::Draw(float dt)
