@@ -5,6 +5,7 @@
 
 #include "State.hpp"
 #include "GameLoop.hpp"
+#include "Pipe.hpp"
 
 
 namespace Bardo
@@ -22,6 +23,8 @@ namespace Bardo
 
 	private:
 		GameDataRef _data;
+
+		Pipe *pipe;
 
 		sf::Sprite _background;
 
