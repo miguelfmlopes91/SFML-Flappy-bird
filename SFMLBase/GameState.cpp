@@ -52,9 +52,7 @@ namespace Bardo
 			if (this->_data->input.IsSpriteClicked(this->_background, sf::Mouse::Left, this->_data->window))
 			{
 				// Switch To Main Menu
-				pipe->SpawnInvisiblePipe();
-				pipe->SpawnBottomPipe();
-				pipe->SpawnTopPipe();
+
 			}
 
 		}
@@ -63,6 +61,16 @@ namespace Bardo
 	void GameState::Update(float dt)
 	{
 		pipe->MovePipes(dt);
+		
+		if (clock.getElapsedTime().asSeconds()>
+			PIPE_SPAWN_FREQUENCY)
+		{
+			pipe->SpawnInvisiblePipe();
+			pipe->SpawnBottomPipe();
+			pipe->SpawnTopPipe();
+
+			clock.restart();
+		}
 	}
 
 	void GameState::Draw(float dt)
