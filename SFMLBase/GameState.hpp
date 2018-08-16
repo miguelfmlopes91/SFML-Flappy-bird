@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
+#include "Land.hpp"
 #include "State.hpp"
 #include "GameLoop.hpp"
 #include "Pipe.hpp"
@@ -25,6 +25,8 @@ namespace Bardo
 		GameDataRef _data;
 
 		Pipe *pipe;
+
+		Land *land;
 
 		sf::Sprite _background;
 
