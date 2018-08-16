@@ -17,10 +17,14 @@ namespace Bardo
 		void SpawnTopPipe();
 		void SpawnInvisiblePipe();
 		void MovePipes(float dt);
+		void RandomisePipeOffset();
 
 	private:
 		GameDataRef _data;
 		std::vector<sf::Sprite> pipeSprites;
+
+		int _landHeight;
+		int _pipeSpawnYOffset;
 
 	};
 }

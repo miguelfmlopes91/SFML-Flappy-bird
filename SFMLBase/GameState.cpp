@@ -67,6 +67,7 @@ namespace Bardo
 		if (clock.getElapsedTime().asSeconds()>
 			PIPE_SPAWN_FREQUENCY)
 		{
+			pipe->RandomisePipeOffset();
 			pipe->SpawnInvisiblePipe();
 			pipe->SpawnBottomPipe();
 			pipe->SpawnTopPipe();
