@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameLoop.hpp"
 #include <vector>
+#include "DEFINITIONS.hpp"
 
 namespace Bardo
 {
@@ -12,7 +13,10 @@ namespace Bardo
 		Pipe(GameDataRef data);
 
 		void DrawPipes();
-
+		void SpawnBottomPipe();
+		void SpawnTopPipe();
+		void SpawnInvisiblePipe();
+		void MovePipes(float dt);
 
 	private:
 		GameDataRef _data;

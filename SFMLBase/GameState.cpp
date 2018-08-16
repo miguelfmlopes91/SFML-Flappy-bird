@@ -49,12 +49,20 @@ namespace Bardo
 			{
 				this->_data->window.close();
 			}
+			if (this->_data->input.IsSpriteClicked(this->_background, sf::Mouse::Left, this->_data->window))
+			{
+				// Switch To Main Menu
+				pipe->SpawnInvisiblePipe();
+				pipe->SpawnBottomPipe();
+				pipe->SpawnTopPipe();
+			}
 
 		}
 	}
 
 	void GameState::Update(float dt)
 	{
+		pipe->MovePipes(dt);
 	}
 
 	void GameState::Draw(float dt)
