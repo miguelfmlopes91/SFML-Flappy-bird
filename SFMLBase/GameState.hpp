@@ -6,7 +6,7 @@
 #include "State.hpp"
 #include "GameLoop.hpp"
 #include "Pipe.hpp"
-
+#include "Bird.hpp"
 
 namespace Bardo
 {
@@ -27,6 +27,8 @@ namespace Bardo
 		Pipe *pipe;
 
 		Land *land;
+
+		Bird *bird;
 
 		sf::Sprite _background;
 

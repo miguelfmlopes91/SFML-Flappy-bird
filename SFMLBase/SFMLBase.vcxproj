@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetsManager.cpp" />
+    <ClCompile Include="Bird.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -33,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetsManager.hpp" />
+    <ClInclude Include="Bird.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="GameLoop.hpp" />
     <ClInclude Include="GameOverState.hpp" />

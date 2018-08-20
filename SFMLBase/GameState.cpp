@@ -23,15 +23,16 @@ namespace Bardo
 		this->_data->assets.LoadTexture("Pipe Up", PIPE_UP_FILEPATH);
 		this->_data->assets.LoadTexture("Pipe Down", PIPE_DOWN_FILEPATH);
 		this->_data->assets.LoadTexture("Land", LAND_FILEPATH);
-		//this->_data->assets.LoadTexture("Bird Frame 1", BIRD_FRAME_1_FILEPATH);
-		//this->_data->assets.LoadTexture("Bird Frame 2", BIRD_FRAME_2_FILEPATH);
-		//this->_data->assets.LoadTexture("Bird Frame 3", BIRD_FRAME_3_FILEPATH);
-		//this->_data->assets.LoadTexture("Bird Frame 4", BIRD_FRAME_4_FILEPATH);
+		this->_data->assets.LoadTexture("Bird Frame 1", BIRD_FRAME_1_FILEPATH);
+		this->_data->assets.LoadTexture("Bird Frame 2", BIRD_FRAME_2_FILEPATH);
+		this->_data->assets.LoadTexture("Bird Frame 3", BIRD_FRAME_3_FILEPATH);
+		this->_data->assets.LoadTexture("Bird Frame 4", BIRD_FRAME_4_FILEPATH);
 		//this->_data->assets.LoadTexture("Scoring Pipe", SCORING_PIPE_FILEPATH);
 		//this->_data->assets.LoadFont("Flappy Font", FLAPPY_FONT_FILEPATH);
 
 		pipe = new Pipe(_data);
 		land = new Land(_data);
+		bird = new Bird(_data);
 
 		_background.setTexture(this->_data->assets.GetTexture("Game Background"));
 
@@ -74,6 +75,7 @@ namespace Bardo
 
 			clock.restart();
 		}
+		bird->Animate(dt);
 	}
 
 	void GameState::Draw(float dt)
@@ -83,6 +85,7 @@ namespace Bardo
 		this->_data->window.draw(this->_background);
 		this->pipe->DrawPipes();
 		this->land->DrawLand();
+		this->bird->Draw();
 		this->_data->window.display();
 	}
 }
