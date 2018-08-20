@@ -54,44 +54,44 @@ namespace Bardo
 
 	void Bird::Update(float dt)
 	{
-		//if (BIRD_STATE_FALLING == _birdState)
-		//{
-		//	_birdSprite.move(0, GRAVITY * dt);
+		if (BIRD_STATE_FALLING == _birdState)
+		{
+			_birdSprite.move(0, GRAVITY * dt);
 
-		//	_rotation += ROTATION_SPEED * dt;
+			_rotation += ROTATION_SPEED * dt;
 
-		//	if (_rotation > 25.0f)
-		//	{
-		//		_rotation = 25.0f;
-		//	}
+			if (_rotation > 25.0f)
+			{
+				_rotation = 25.0f;
+			}
 
-		//	_birdSprite.setRotation(_rotation);
-		//}
-		//else if (BIRD_STATE_FLYING == _birdState)
-		//{
-		//	_birdSprite.move(0, -FLYING_SPEED * dt);
+			_birdSprite.setRotation(_rotation);
+		}
+		else if (BIRD_STATE_FLYING == _birdState)
+		{
+			_birdSprite.move(0, -FLYING_SPEED * dt);
 
-		//	_rotation -= ROTATION_SPEED * dt;
+			_rotation -= ROTATION_SPEED * dt;
 
-		//	if (_rotation < -25.0f)
-		//	{
-		//		_rotation = -25.0f;
-		//	}
+			if (_rotation < -25.0f)
+			{
+				_rotation = -25.0f;
+			}
 
-		//	_birdSprite.setRotation(_rotation);
-		//}
+			_birdSprite.setRotation(_rotation);
+		}
 
-		//if (_movementClock.getElapsedTime().asSeconds() > FLYING_DURATION)
-		//{
-		//	_movementClock.restart();
-		//	_birdState = BIRD_STATE_FALLING;
-		//}
+		if (_movementClock.getElapsedTime().asSeconds() > FLYING_DURATION)
+		{
+			_movementClock.restart();
+			_birdState = BIRD_STATE_FALLING;
+		}
 	}
 
 	void Bird::Tap()
 	{
-		//_movementClock.restart();
-		//_birdState = BIRD_STATE_FLYING;
+		_movementClock.restart();
+		_birdState = BIRD_STATE_FLYING;
 	}
 
 	const sf::Sprite &Bird::GetSprite() const

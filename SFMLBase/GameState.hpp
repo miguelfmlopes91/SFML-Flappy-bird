@@ -7,6 +7,7 @@
 #include "GameLoop.hpp"
 #include "Pipe.hpp"
 #include "Bird.hpp"
+#include "Collision.hpp"
 
 namespace Bardo
 {
@@ -25,10 +26,9 @@ namespace Bardo
 		GameDataRef _data;
 
 		Pipe *pipe;
-
 		Land *land;
-
 		Bird *bird;
+		Collision collision;
 
 		sf::Sprite _background;
 

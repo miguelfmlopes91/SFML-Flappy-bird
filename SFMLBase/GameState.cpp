@@ -53,8 +53,12 @@ namespace Bardo
 			}
 			if (this->_data->input.IsSpriteClicked(this->_background, sf::Mouse::Left, this->_data->window))
 			{
-				// Switch To Main Menu
-
+				if (GameStates::eGameOver != _gameState)
+				{
+					_gameState = GameStates::ePlaying;
+					bird->Tap();
+				}
+				
 			}
 
 		}
@@ -62,20 +66,39 @@ namespace Bardo
 
 	void GameState::Update(float dt)
 	{
-		pipe->MovePipes(dt);
-		land->MoveLand(dt);
-		
-		if (clock.getElapsedTime().asSeconds()>
-			PIPE_SPAWN_FREQUENCY)
+		if (GameStates::eGameOver != _gameState)
 		{
-			pipe->RandomisePipeOffset();
-			pipe->SpawnInvisiblePipe();
-			pipe->SpawnBottomPipe();
-			pipe->SpawnTopPipe();
-
-			clock.restart();
+			bird->Animate(dt);
+			
+			land->MoveLand(dt);
 		}
-		bird->Animate(dt);
+
+		if (GameStates::ePlaying == _gameState)
+		{
+			pipe->MovePipes(dt);
+
+			if (clock.getElapsedTime().asSeconds()>
+				PIPE_SPAWN_FREQUENCY)
+			{
+				pipe->RandomisePipeOffset();
+				pipe->SpawnInvisiblePipe();
+				pipe->SpawnBottomPipe();
+				pipe->SpawnTopPipe();
+
+				clock.restart();
+			}
+		}
+		
+		bird->Update(dt);
+
+		std::vector<sf::Sprite> landSprites = land->GetSprites();
+		for (size_t i = 0; i < landSprites.size(); i++)
+		{
+			if (collision.CheckSpriteCollision(bird->GetSprite(),landSprites.at(i)))
+			{
+				_gameState = GameStates::eGameOver;
+			}
+		}
 	}
 
 	void GameState::Draw(float dt)
