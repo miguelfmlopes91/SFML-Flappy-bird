@@ -69,7 +69,6 @@ namespace Bardo
 		if (GameStates::eGameOver != _gameState)
 		{
 			bird->Animate(dt);
-			
 			land->MoveLand(dt);
 		}
 
@@ -87,18 +86,26 @@ namespace Bardo
 
 				clock.restart();
 			}
-		}
-		
-		bird->Update(dt);
 
-		std::vector<sf::Sprite> landSprites = land->GetSprites();
-		for (size_t i = 0; i < landSprites.size(); i++)
-		{
-			if (collision.CheckSpriteCollision(bird->GetSprite(),landSprites.at(i)))
+			bird->Update(dt);
+
+			std::vector<sf::Sprite> landSprites = land->GetSprites();
+			for (size_t i = 0; i < landSprites.size(); i++)
 			{
-				_gameState = GameStates::eGameOver;
+				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.7f,landSprites.at(i),1.0f))
+				{
+					_gameState = GameStates::eGameOver;
+				}
 			}
-		}
+			std::vector<sf::Sprite> pipeSprites = pipe->GetSprites();
+			for (size_t i = 0; i < pipeSprites.size(); i++)
+			{
+				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, pipeSprites.at(i),1.0f))
+				{
+					_gameState = GameStates::eGameOver;
+				}
+			}
+		}	
 	}
 
 	void GameState::Draw(float dt)

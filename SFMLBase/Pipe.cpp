@@ -63,4 +63,7 @@ namespace Bardo
 		pipeSprites.push_back(sprite);
 	}
 
+	const std::vector<sf::Sprite> &Pipe::GetSprites() const {
+		return pipeSprites;
+	}
 }
