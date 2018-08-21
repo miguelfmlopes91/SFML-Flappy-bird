@@ -8,6 +8,7 @@
 #include "Pipe.hpp"
 #include "Bird.hpp"
 #include "Collision.hpp"
+#include "Flash.hpp"
 
 namespace Bardo
 {
@@ -29,6 +30,7 @@ namespace Bardo
 		Land *land;
 		Bird *bird;
 		Collision collision;
+		Flash *flash;
 
 		sf::Sprite _background;
 

@@ -33,6 +33,7 @@ namespace Bardo
 		pipe = new Pipe(_data);
 		land = new Land(_data);
 		bird = new Bird(_data);
+		flash = new Flash(_data);
 
 		_background.setTexture(this->_data->assets.GetTexture("Game Background"));
 
@@ -105,7 +106,11 @@ namespace Bardo
 					_gameState = GameStates::eGameOver;
 				}
 			}
-		}	
+		}
+		if (GameStates::eGameOver==_gameState)
+		{
+			flash->Show(dt);
+		}
 	}
 
 	void GameState::Draw(float dt)
@@ -116,6 +121,9 @@ namespace Bardo
 		this->pipe->DrawPipes();
 		this->land->DrawLand();
 		this->bird->Draw();
+
+		this->flash->Draw();
+
 		this->_data->window.display();
 	}
 }
