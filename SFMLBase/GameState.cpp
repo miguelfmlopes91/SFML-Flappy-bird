@@ -77,7 +77,7 @@ namespace Bardo
 		{
 			pipe->MovePipes(dt);
 
-			if (clock.getElapsedTime().asSeconds()>
+			if (clock.getElapsedTime().asSeconds() >
 				PIPE_SPAWN_FREQUENCY)
 			{
 				pipe->RandomisePipeOffset();
@@ -94,7 +94,7 @@ namespace Bardo
 			std::vector<sf::Sprite> landSprites = land->GetSprites();
 			for (size_t i = 0; i < landSprites.size(); i++)
 			{
-				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.7f,landSprites.at(i),1.0f))
+				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.7f, landSprites.at(i), 1.0f))
 				{
 					_gameState = GameStates::eGameOver;
 				}
@@ -103,21 +103,24 @@ namespace Bardo
 			std::vector<sf::Sprite> pipeSprites = pipe->GetSprites();
 			for (size_t i = 0; i < pipeSprites.size(); i++)
 			{
-				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, pipeSprites.at(i),1.0f))
+				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, pipeSprites.at(i), 1.0f))
 				{
 					_gameState = GameStates::eGameOver;
 				}
 			}
-
-			std::vector<sf::Sprite> &scoringSprites = pipe->GetScoringSprites();
-			for (size_t i = 0; i < scoringSprites.size(); i++)
+			
+			if (GameStates::ePlaying == _gameState)
 			{
-				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, scoringSprites.at(i), 1.0f))
+				std::vector<sf::Sprite> &scoringSprites = pipe->GetScoringSprites();
+				for (size_t i = 0; i < scoringSprites.size(); i++)
 				{
-					_score++;
-					std::cout << _score << std::endl;
+					if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, scoringSprites.at(i), 1.0f))
+					{
+						_score++;
+						std::cout << _score << std::endl;
 
-					scoringSprites.erase(scoringSprites.begin() + i);
+						scoringSprites.erase(scoringSprites.begin() + i);
+					}
 				}
 			}
 		}
