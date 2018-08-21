@@ -27,7 +27,7 @@ namespace Bardo
 		this->_data->assets.LoadTexture("Bird Frame 2", BIRD_FRAME_2_FILEPATH);
 		this->_data->assets.LoadTexture("Bird Frame 3", BIRD_FRAME_3_FILEPATH);
 		this->_data->assets.LoadTexture("Bird Frame 4", BIRD_FRAME_4_FILEPATH);
-		//this->_data->assets.LoadTexture("Scoring Pipe", SCORING_PIPE_FILEPATH);
+		this->_data->assets.LoadTexture("Scoring Pipe", SCORING_PIPE_FILEPATH);
 		//this->_data->assets.LoadFont("Flappy Font", FLAPPY_FONT_FILEPATH);
 
 		pipe = new Pipe(_data);
@@ -84,6 +84,7 @@ namespace Bardo
 				pipe->SpawnInvisiblePipe();
 				pipe->SpawnBottomPipe();
 				pipe->SpawnTopPipe();
+				pipe->SpawnScoringPipe();
 
 				clock.restart();
 			}
@@ -98,6 +99,7 @@ namespace Bardo
 					_gameState = GameStates::eGameOver;
 				}
 			}
+
 			std::vector<sf::Sprite> pipeSprites = pipe->GetSprites();
 			for (size_t i = 0; i < pipeSprites.size(); i++)
 			{
@@ -106,7 +108,20 @@ namespace Bardo
 					_gameState = GameStates::eGameOver;
 				}
 			}
+
+			std::vector<sf::Sprite> &scoringSprites = pipe->GetScoringSprites();
+			for (size_t i = 0; i < scoringSprites.size(); i++)
+			{
+				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, scoringSprites.at(i), 1.0f))
+				{
+					_score++;
+					std::cout << _score << std::endl;
+
+					scoringSprites.erase(scoringSprites.begin() + i);
+				}
+			}
 		}
+
 		if (GameStates::eGameOver==_gameState)
 		{
 			flash->Show(dt);

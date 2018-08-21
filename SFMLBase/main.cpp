@@ -3,5 +3,5 @@
 
 int main()
 {
-	Bardo::GameLoop(600, 800, "Flappy Bird");
+	Bardo::GameLoop(SCREEN_WIDTH,SCREEN_HEIGHT, "Flappy Bird");
 }

@@ -34,6 +34,20 @@ namespace Bardo
 			}
 
 		}
+
+		for (unsigned short int i = 0; i < scoringPipes.size(); i++)
+		{
+			if (scoringPipes.at(i).getPosition().x < 0 - scoringPipes.at(i).getGlobalBounds().width) {
+				scoringPipes.erase(scoringPipes.begin() + i);
+			}
+			else
+			{
+				float movement = PIPE_MOVEMENT_SPEED * dt;
+
+				scoringPipes.at(i).move(-movement, 0);
+			}
+
+		}
 		
 	}
 
@@ -57,13 +71,24 @@ namespace Bardo
 	}
 	void Pipe::SpawnInvisiblePipe()
 	{
-		sf::Sprite sprite(_data->assets.GetTexture("Pipe Up"));
+		sf::Sprite sprite(_data->assets.GetTexture("Pipe Down"));
 		sprite.setPosition(_data->window.getSize().x, _data->window.getSize().y - sprite.getGlobalBounds().height);
 		sprite.setColor(sf::Color(0, 0, 0, 0));
 		pipeSprites.push_back(sprite);
 	}
+	void Pipe::SpawnScoringPipe()
+	{
+		sf::Sprite sprite(_data->assets.GetTexture("Scoring Pipe"));
+		sprite.setPosition(_data->window.getSize().x, 0);
+		sprite.setColor(sf::Color(0, 0, 0, 0));
+		scoringPipes.push_back(sprite);
+	}
 
 	const std::vector<sf::Sprite> &Pipe::GetSprites() const {
 		return pipeSprites;
+	}
+
+	 std::vector<sf::Sprite> &Pipe::GetScoringSprites()  {
+		return scoringPipes;
 	}
 }
