@@ -9,6 +9,7 @@
 #include "Bird.hpp"
 #include "Collision.hpp"
 #include "Flash.hpp"
+#include "Hud.hpp"
 
 namespace Bardo
 {
@@ -31,6 +32,7 @@ namespace Bardo
 		Bird *bird;
 		Collision collision;
 		Flash *flash;
+		HUD *hud;
 
 		sf::Sprite _background;
 

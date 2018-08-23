@@ -26,6 +26,7 @@
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Hud.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="main.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="GameLoop.hpp" />
     <ClInclude Include="GameOverState.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Hud.hpp" />
     <ClInclude Include="InputsManager.hpp" />
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="MainMenuState.hpp" />

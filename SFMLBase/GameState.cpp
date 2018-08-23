@@ -28,16 +28,18 @@ namespace Bardo
 		this->_data->assets.LoadTexture("Bird Frame 3", BIRD_FRAME_3_FILEPATH);
 		this->_data->assets.LoadTexture("Bird Frame 4", BIRD_FRAME_4_FILEPATH);
 		this->_data->assets.LoadTexture("Scoring Pipe", SCORING_PIPE_FILEPATH);
-		//this->_data->assets.LoadFont("Flappy Font", FLAPPY_FONT_FILEPATH);
+		this->_data->assets.LoadFont("Flappy Font", FLAPPY_FONT_FILEPATH);
 
 		pipe = new Pipe(_data);
 		land = new Land(_data);
 		bird = new Bird(_data);
 		flash = new Flash(_data);
+		hud = new HUD(_data);
 
 		_background.setTexture(this->_data->assets.GetTexture("Game Background"));
 
 		_score = 0;
+		hud->UpdateScore(_score);
 
 		_gameState = GameStates::eReady;
 	}
@@ -117,8 +119,7 @@ namespace Bardo
 					if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, scoringSprites.at(i), 1.0f))
 					{
 						_score++;
-						std::cout << _score << std::endl;
-
+						hud->UpdateScore(_score);
 						scoringSprites.erase(scoringSprites.begin() + i);
 					}
 				}
@@ -141,6 +142,8 @@ namespace Bardo
 		this->bird->Draw();
 
 		this->flash->Draw();
+
+		this->hud->Draw();
 
 		this->_data->window.display();
 	}
