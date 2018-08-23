@@ -5,6 +5,7 @@
 
 #include "DEFINITIONS.hpp"
 #include "GameState.hpp"
+#include "GameOverState.hpp"
 
 
 
@@ -99,6 +100,8 @@ namespace Bardo
 				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.7f, landSprites.at(i), 1.0f))
 				{
 					_gameState = GameStates::eGameOver;
+
+					clock.restart();
 				}
 			}
 
@@ -108,6 +111,8 @@ namespace Bardo
 				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, pipeSprites.at(i), 1.0f))
 				{
 					_gameState = GameStates::eGameOver;
+
+					clock.restart();
 				}
 			}
 			
@@ -129,7 +134,13 @@ namespace Bardo
 		if (GameStates::eGameOver==_gameState)
 		{
 			flash->Show(dt);
+			if (clock.getElapsedTime().asSeconds()> TIME_BEFORE_GAME_OVER_APPEARS)
+			{
+				_data->machine.AddState(StateRef(new GameOverState(_data,_score)), true);
+			}
 		}
+
+
 	}
 
 	void GameState::Draw(float dt)
