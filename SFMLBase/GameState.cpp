@@ -1,13 +1,11 @@
 #pragma once
 
 #include <sstream>
-#include <iostream>
-
 #include "DEFINITIONS.hpp"
 #include "GameState.hpp"
 #include "GameOverState.hpp"
 
-
+#include <iostream>
 
 namespace Bardo
 {
@@ -18,7 +16,24 @@ namespace Bardo
 
 	void GameState::Init()
 	{
+		if (!_hitSoundBuffer.loadFromFile(HIT_SOUND_FILEPATH))
+		{
+			std::cout << "Error Loading Hit Sound Effect" << std::endl;
+		}
 
+		if (!_wingSoundBuffer.loadFromFile(WING_SOUND_FILEPATH))
+		{
+			std::cout << "Error Loading Wing Sound Effect" << std::endl;
+		}
+
+		if (!_pointSoundBuffer.loadFromFile(POINT_SOUND_FILEPATH))
+		{
+			std::cout << "Error Loading Point Sound Effect" << std::endl;
+		}
+
+		_hitSound.setBuffer(_hitSoundBuffer);
+		_wingSound.setBuffer(_wingSoundBuffer);
+		_pointSound.setBuffer(_pointSoundBuffer);
 
 		this->_data->assets.LoadTexture("Game Background", GAME_BACKGROUND_FILEPATH);
 		this->_data->assets.LoadTexture("Pipe Up", PIPE_UP_FILEPATH);
@@ -55,16 +70,17 @@ namespace Bardo
 			{
 				this->_data->window.close();
 			}
+
 			if (this->_data->input.IsSpriteClicked(this->_background, sf::Mouse::Left, this->_data->window))
 			{
 				if (GameStates::eGameOver != _gameState)
 				{
 					_gameState = GameStates::ePlaying;
 					bird->Tap();
-				}
-				
-			}
 
+					_wingSound.play();
+				}
+			}
 		}
 	}
 
@@ -80,10 +96,10 @@ namespace Bardo
 		{
 			pipe->MovePipes(dt);
 
-			if (clock.getElapsedTime().asSeconds() >
-				PIPE_SPAWN_FREQUENCY)
+			if (clock.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY)
 			{
 				pipe->RandomisePipeOffset();
+
 				pipe->SpawnInvisiblePipe();
 				pipe->SpawnBottomPipe();
 				pipe->SpawnTopPipe();
@@ -95,52 +111,62 @@ namespace Bardo
 			bird->Update(dt);
 
 			std::vector<sf::Sprite> landSprites = land->GetSprites();
-			for (size_t i = 0; i < landSprites.size(); i++)
+
+			for (int i = 0; i < landSprites.size(); i++)
 			{
 				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.7f, landSprites.at(i), 1.0f))
 				{
 					_gameState = GameStates::eGameOver;
 
 					clock.restart();
+
+					_hitSound.play();
 				}
 			}
 
 			std::vector<sf::Sprite> pipeSprites = pipe->GetSprites();
-			for (size_t i = 0; i < pipeSprites.size(); i++)
+
+			for (int i = 0; i < pipeSprites.size(); i++)
 			{
 				if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, pipeSprites.at(i), 1.0f))
 				{
 					_gameState = GameStates::eGameOver;
 
 					clock.restart();
+
+					_hitSound.play();
 				}
 			}
-			
+
 			if (GameStates::ePlaying == _gameState)
 			{
 				std::vector<sf::Sprite> &scoringSprites = pipe->GetScoringSprites();
-				for (size_t i = 0; i < scoringSprites.size(); i++)
+
+				for (int i = 0; i < scoringSprites.size(); i++)
 				{
 					if (collision.CheckSpriteCollision(bird->GetSprite(), 0.625f, scoringSprites.at(i), 1.0f))
 					{
 						_score++;
+
 						hud->UpdateScore(_score);
+
 						scoringSprites.erase(scoringSprites.begin() + i);
+
+						_pointSound.play();
 					}
 				}
 			}
 		}
 
-		if (GameStates::eGameOver==_gameState)
+		if (GameStates::eGameOver == _gameState)
 		{
 			flash->Show(dt);
-			if (clock.getElapsedTime().asSeconds()> TIME_BEFORE_GAME_OVER_APPEARS)
+
+			if (clock.getElapsedTime().asSeconds() > TIME_BEFORE_GAME_OVER_APPEARS)
 			{
-				_data->machine.AddState(StateRef(new GameOverState(_data,_score)), true);
+				this->_data->machine.AddState(StateRef(new GameOverState(_data, _score)), true);
 			}
 		}
-
-
 	}
 
 	void GameState::Draw(float dt)
@@ -148,13 +174,14 @@ namespace Bardo
 		this->_data->window.clear(sf::Color::Red);
 
 		this->_data->window.draw(this->_background);
-		this->pipe->DrawPipes();
-		this->land->DrawLand();
-		this->bird->Draw();
 
-		this->flash->Draw();
+		pipe->DrawPipes();
+		land->DrawLand();
+		bird->Draw();
 
-		this->hud->Draw();
+		flash->Draw();
+
+		hud->Draw();
 
 		this->_data->window.display();
 	}
