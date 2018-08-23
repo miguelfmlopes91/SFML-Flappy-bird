@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
-#include "GameLoop.hpp"
+#include "GameManager.hpp"
 
 namespace Bardo
 {

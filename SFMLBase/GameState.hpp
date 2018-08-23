@@ -4,7 +4,7 @@
 #include <SFML/Audio.hpp>
 #include "Land.hpp"
 #include "State.hpp"
-#include "GameLoop.hpp"
+#include "GameManager.hpp"
 #include "Pipe.hpp"
 #include "Bird.hpp"
 #include "Collision.hpp"

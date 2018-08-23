@@ -1,11 +1,11 @@
-#include "GameLoop.hpp"
+#include "GameManager.hpp"
 #include "SplashState.hpp"
 #include <stdlib.h>
 #include <time.h>
 
 namespace Bardo
 {
-	GameLoop::GameLoop(int width, int height, std::string title)
+	GameManager::GameManager(int width, int height, std::string title)
 	{
 		srand(time(NULL));
 		_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
@@ -14,7 +14,7 @@ namespace Bardo
 		this->Run();
 	}
 
-	void GameLoop::Run()
+	void GameManager::Run()
 	{
 		float newTime, frameTime, interpolation;
 

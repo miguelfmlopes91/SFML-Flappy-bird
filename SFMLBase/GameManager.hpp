@@ -19,10 +19,10 @@ namespace Bardo
 
 	typedef std::shared_ptr<GameData> GameDataRef;
 
-	class GameLoop
+	class GameManager
 	{
 	public:
-		GameLoop(int width, int height, std::string title);
+		GameManager(int width, int height, std::string title);
 
 	private:
 		// Updates run at 60 per second.

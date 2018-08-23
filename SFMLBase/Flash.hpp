@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "GameLoop.hpp"
+#include "GameManager.hpp"
 #include "DEFINITIONS.hpp"
 
 namespace Bardo

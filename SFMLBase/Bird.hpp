@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "DEFINITIONS.hpp"
-#include "GameLoop.hpp"
+#include "GameManager.hpp"
 
 #include <vector>
 

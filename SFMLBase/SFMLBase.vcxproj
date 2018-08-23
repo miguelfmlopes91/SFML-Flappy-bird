@@ -23,7 +23,7 @@
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Flash.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hud.cpp" />
@@ -41,7 +41,7 @@
     <ClInclude Include="Collision.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Flash.hpp" />
-    <ClInclude Include="GameLoop.hpp" />
+    <ClInclude Include="GameManager.hpp" />
     <ClInclude Include="GameOverState.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Hud.hpp" />

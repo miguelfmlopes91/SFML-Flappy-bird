@@ -1,7 +1,7 @@
-#include "GameLoop.hpp"
+#include "GameManager.hpp"
 #include "DEFINITIONS.hpp"
 
 int main()
 {
-	Bardo::GameLoop(SCREEN_WIDTH,SCREEN_HEIGHT, "Flappy Bird");
+	Bardo::GameManager(SCREEN_WIDTH,SCREEN_HEIGHT, "Flappy Bird");
 }
