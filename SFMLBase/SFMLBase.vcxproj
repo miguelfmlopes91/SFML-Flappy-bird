@@ -22,6 +22,7 @@
     <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="DebugState.cpp" />
     <ClCompile Include="Flash.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameOverState.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="AssetsManager.hpp" />
     <ClInclude Include="Bird.hpp" />
     <ClInclude Include="Collision.hpp" />
+    <ClInclude Include="DebugState.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Flash.hpp" />
     <ClInclude Include="GameManager.hpp" />

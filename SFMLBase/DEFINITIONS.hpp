@@ -26,6 +26,7 @@
 #define SCORING_PIPE_FILEPATH "Resources/res/InvisibleScoringPipe.png"
 
 #define FLAPPY_FONT_FILEPATH "Resources/fonts/FlappyFont.ttf"
+#define DEBUG_FONT_FILEPATH "Resources/fonts/arial.ttf"
 
 #define GAME_OVER_TITLE_FILEPATH "Resources/res/Game-Over-Title.png"
 #define GAME_OVER_BODY_FILEPATH "Resources/res/Game-Over-Body.png"

@@ -1,6 +1,6 @@
 #include "Pipe.hpp"
 #include "DEFINITIONS.hpp"
-
+#include <math.h>
 #include <iostream>
 
 namespace Bardo
@@ -28,7 +28,7 @@ namespace Bardo
 			}
 			else
 			{
-				float movement = PIPE_MOVEMENT_SPEED * dt;
+				float movement = pow(PIPE_MOVEMENT_SPEED,1.2) * dt;
 
 				pipeSprites.at(i).move(-movement, 0);
 			}
@@ -42,7 +42,7 @@ namespace Bardo
 			}
 			else
 			{
-				float movement = PIPE_MOVEMENT_SPEED * dt;
+				float movement = pow(PIPE_MOVEMENT_SPEED, 1.2) * dt;
 
 				scoringPipes.at(i).move(-movement, 0);
 			}

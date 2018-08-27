@@ -6,10 +6,10 @@
 
 namespace Bardo
 {
-	class MainMenuState : public State
+	class DebugState : public State
 	{
 	public:
-		MainMenuState(GameDataRef data);
+		DebugState(GameDataRef data);
 
 		void Init();
 
@@ -23,12 +23,6 @@ namespace Bardo
 	private:
 		GameDataRef _data;
 
-		sf::Sprite _background;
-		sf::Sprite _title;
-		sf::Sprite _playButton;
-
-		sf::Font _font;
-		sf::Text _debugTitle;
 
 	};
 }
